@@ -6,6 +6,7 @@ Location Weather Search App built with with angularjs:
  - promises for running sync functions
  - chart.js for forecasting high and low temperatures throughout the week
 
+![alt tag](https://s3.amazonaws.com/JohnTan/Pictures/LocationWeatherSearch.jpg)
 
 ## Build & development
 
