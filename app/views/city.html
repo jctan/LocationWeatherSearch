@@ -1,0 +1,133 @@
+<body ng-controller='cityCtrl'>
+<br />
+<!-- ZIPCODE SEARCH -->
+<div class="container">
+	<div class="well well-lg">
+		<center>
+			<img class="main-logo" src="images/Cloud-Fog-Sun.svg"/>
+			<br>
+			<span class="main-title">Weather Search</span>
+			<br>
+			<form ng-hide="weather" class="form-horizontal" ng-submit="findWeather(zip)">
+			<div class="form-group">
+				<label for="zip-input" class="control-label">Zip:</label>
+				<input id="zip-input" type="text" ng-model="zip">
+				<button ng-show="zip" class="btn btn-primary" type="submit">Submit</button>
+				</div>
+			</form>
+			<br />
+			<i ng-show="zip">Showing results for ZIP code {{zip}}... </i>
+			<button ng-show="weather" ng-click="resetWeather()" class="btn btn-primary btn-xs">
+					<i class="fa fa-history"></i>Reset
+			</button>
+		</center>
+    </div>
+</div>
+
+<!-- FORECAST FOR TODAY -->
+<div class="container">
+	<div ng-show="weather" class="well well-lg">
+		<div class="currentConditions">
+			<span class="main-title">{{ weather.location.city }}, {{ weather.location.region }} </span>
+			<br />
+			<img ng-src="images/{{weatherImages(weather.item.condition.code)}}.svg"/>
+
+			<h3>Currently: </h3>
+			<span class="label label-primary"> {{weather.item.condition.temp}} &deg {{weather.units.temperature}}</span>
+		</div>
+		<br>
+
+		<!-- progress bar --> 
+		<div class="highLow">
+			<span class="label label-primary todayLow">LOW: {{forecast[1].low}}</span>
+			<span class="label label-primary todayHigh">Hi: {{forecast[1].high}}</span>
+			<div class="progress progress-striped active">
+	  			<div class="progress-bar progress-bar-info" style="width: {{tempIndex}}%"></div>
+			</div>
+		</div>
+
+		<!-- SUNRISE/SET -->
+			<hr>
+			<div class="row">
+				<center>
+					<div class="col-lg-6">
+						<img src="images/Sunrise.svg" /> SUNRISE: {{weather.astronomy.sunrise}}<br>
+					</div>
+					<div class="col-lg-6">
+						<img src="images/Sunset.svg" /> SUNSET: {{weather.astronomy.sunset}}
+					</div>
+				</center>
+			</div>
+
+		<!-- FEELS / WIND -->
+			<div class="row">
+				<center>
+					<div class="col-lg-4">
+						<img src="images/Thermometer-75.svg" />FEELS LIKE: {{weather.wind.chill}}&deg{{weather.units.temperature}}
+					</div>
+					<div class="col-lg-4">
+						<img src="images/Wind.svg" />WINDSPEED: {{weather.wind.speed}} {{weather.units.speed}}
+					</div>
+					<div class="col-lg-4">
+						<img src="images/Cloud-Fog-Alt.svg" />HUMIDITY: {{weather.atmosphere.humidity}}%
+					</div>
+				</center>
+			</div>
+	</div>
+</div>
+
+<!-- 5 DAY FORECAST -->
+	<div class="container">
+		<div ng-show="weather" class="well well-lg">
+			<center><span class="main-title">This Week's Forecast</span></center>
+			<div class="row">
+				<div ng-repeat="day in forecast" ng-if="$index>0" class="col-sm-6 col-md-4 col-lg-3">
+					<div class="thumbnail">
+						<center>
+							<span class="forecast-title">{{day.day}}</span>
+							<p>{{day.text}}</p>
+							<hr>
+							<img ng-src="images/{{weatherImages(day.code)}}.svg"/>
+						<button class="btn btn-danger btn-md btn-block">
+							<i class="fa fa-arrow-circle-up"></i> High {{day.high}}<br>
+						</button>
+						<button class="btn btn-primary btn-md btn-block">
+							<i class="fa fa-arrow-circle-down"></i> Low {{day.low}}
+						</button>
+						</center>
+					</div>
+				</div>
+
+		</div>
+	</div>
+</div>
+
+<!-- graph -->
+<div class="container">
+		<div ng-show="weather" class="well well-lg">
+			<button ng-hide="chartDrawn" class="btn btn-primary" ng-click="drawChart(forecast)">
+				<i class="fa fa-line-chart"></i>  draw chart
+			</button>
+			<div class="row">
+				<div class="col-lg-6">
+					<br>
+					<canvas id="forecast-chart">
+					</canvas> 
+				</div>
+				<div class="col-lg-2">
+					<div class="legend">
+						<br>
+						<br>
+						<span ng-show="chartDrawn" class="label label-danger">HIGH</span><br><br>
+						<span ng-show="chartDrawn" class="label label-primary">LOW</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+
+
+

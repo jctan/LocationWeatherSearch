@@ -1,0 +1,15 @@
+<html>
+<body ng-app='localweatherApp'>
+    <div ng-controller="MainCtrl">
+      <div ng-show="zipCode">        
+        <p>{{ zipCode }}</p>
+      </div>
+      <div ng-hide="zipCode">
+        <p>{{ message }}</p>
+      </div>
+    </div>
+
+     <script src="scripts/services/geolocation.js"></script> 
+ <script src="scripts/controllers/mainCtrl.js"></script> 
+</body>
+</html>

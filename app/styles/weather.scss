@@ -1,0 +1,52 @@
+.main-logo {
+	height: 300px;
+}
+
+.main-title {
+	font-size: 3em;
+	margin-left: 30px;
+}
+
+.todayLow {
+	float: left;
+}
+
+.todayHigh {
+	float: right;
+}
+
+.label {
+	margin: 0 5 0 5px;
+	font-size: 1em;
+	/*margin-top: 2.5px;*/
+}
+
+.currentConditions {
+	margin: auto;
+	text-align: center;
+}
+
+.currentConditions span {
+
+}
+
+.fa-arrow-circle-up, .fa-arrow-circle-down {
+	color: white;
+}
+
+.thumbnail {
+	font-size: 1.2em;
+}
+
+.forecast-title {
+	color: #379DC4;
+	font-size: 1.5em;
+}
+
+.degrees {
+	font-size: 2em;
+}
+
+#chart svg {
+  height: 400px;
+}
