@@ -1,7 +1,11 @@
-# localweather
+# Location Weather Search
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.15.1.
+Location Weather Search App built with with angularjs:
+ - Yahoo API
+ - factory service with http for API calls
+ - promises for running sync functions
+ - chart.js for forecasting high and low temperatures throughout the week
+
 
 ## Build & development
 
@@ -9,4 +13,4 @@ Run `grunt` for building and `grunt serve` for preview.
 
 ## Testing
 
-Running `grunt test` will run the unit tests with karma.
+Running `grunt test:unit` will run the unit tests with karma (Test Driven Development).
